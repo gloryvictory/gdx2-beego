@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"encoding/json"
 	"errors"
 	"gdx2-beego/models"
 	"strconv"
@@ -17,33 +16,13 @@ type StlController struct {
 
 // URLMapping ...
 func (c *StlController) URLMapping() {
-	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
-	c.Mapping("Put", c.Put)
-	c.Mapping("Delete", c.Delete)
-}
+	c.Mapping("GetOneROSG", c.GetOneROSG)
 
-// Post ...
-// @Title Post
-// @Description create Stl
-// @Param	body		body 	models.Stl	true		"body for Stl content"
-// @Success 201 {int} models.Stl
-// @Failure 403 body is empty
-// @router / [post]
-func (c *StlController) Post() {
-	var v models.Stl
-	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddStl(&v); err == nil {
-			c.Ctx.Output.SetStatus(201)
-			c.Data["json"] = v
-		} else {
-			c.Data["json"] = err.Error()
-		}
-	} else {
-		c.Data["json"] = err.Error()
-	}
-	c.ServeJSON()
+	// c.Mapping("Post", c.Post)
+	// c.Mapping("Put", c.Put)
+	// c.Mapping("Delete", c.Delete)
 }
 
 // GetOne ...
@@ -57,6 +36,25 @@ func (c *StlController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	v, err := models.GetStlById(id)
+	if err != nil {
+		c.Data["json"] = err.Error()
+	} else {
+		c.Data["json"] = v
+	}
+	c.ServeJSON()
+}
+
+// GetOne ...
+// @Title Get One ROSG
+// @Description get Stl by id
+// @Param	rosg		path 	string	true		"The key for staticblock"
+// @Success 200 {object} models.Stl
+// @Failure 403 :rosg is empty
+// @router /ROSG/:rosg [get]
+func (c *StlController) GetOneROSG() {
+	idStr := c.Ctx.Input.Param(":rosg")
+	// id, _ := strconv.Atoi(idStr)
+	v, err := models.GetStlByRosg(idStr)
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
@@ -136,21 +134,21 @@ func (c *StlController) GetAll() {
 // @Success 200 {object} models.Stl
 // @Failure 403 :id is not int
 // @router /:id [put]
-func (c *StlController) Put() {
-	idStr := c.Ctx.Input.Param(":id")
-	id, _ := strconv.Atoi(idStr)
-	v := models.Stl{Id: id}
-	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateStlById(&v); err == nil {
-			c.Data["json"] = "OK"
-		} else {
-			c.Data["json"] = err.Error()
-		}
-	} else {
-		c.Data["json"] = err.Error()
-	}
-	c.ServeJSON()
-}
+// func (c *StlController) Put() {
+// 	idStr := c.Ctx.Input.Param(":id")
+// 	id, _ := strconv.Atoi(idStr)
+// 	v := models.Stl{Id: id}
+// 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
+// 		if err := models.UpdateStlById(&v); err == nil {
+// 			c.Data["json"] = "OK"
+// 		} else {
+// 			c.Data["json"] = err.Error()
+// 		}
+// 	} else {
+// 		c.Data["json"] = err.Error()
+// 	}
+// 	c.ServeJSON()
+// }
 
 // Delete ...
 // @Title Delete
@@ -159,13 +157,35 @@ func (c *StlController) Put() {
 // @Success 200 {string} delete success!
 // @Failure 403 id is empty
 // @router /:id [delete]
-func (c *StlController) Delete() {
-	idStr := c.Ctx.Input.Param(":id")
-	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteStl(id); err == nil {
-		c.Data["json"] = "OK"
-	} else {
-		c.Data["json"] = err.Error()
-	}
-	c.ServeJSON()
-}
+// func (c *StlController) Delete() {
+// 	idStr := c.Ctx.Input.Param(":id")
+// 	id, _ := strconv.Atoi(idStr)
+// 	if err := models.DeleteStl(id); err == nil {
+// 		c.Data["json"] = "OK"
+// 	} else {
+// 		c.Data["json"] = err.Error()
+// 	}
+// 	c.ServeJSON()
+// }
+
+// Post ...
+// @Title Post
+// @Description create Stl
+// @Param	body		body 	models.Stl	true		"body for Stl content"
+// @Success 201 {int} models.Stl
+// @Failure 403 body is empty
+// @router / [post]
+// func (c *StlController) Post() {
+// 	var v models.Stl
+// 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
+// 		if _, err := models.AddStl(&v); err == nil {
+// 			c.Ctx.Output.SetStatus(201)
+// 			c.Data["json"] = v
+// 		} else {
+// 			c.Data["json"] = err.Error()
+// 		}
+// 	} else {
+// 		c.Data["json"] = err.Error()
+// 	}
+// 	c.ServeJSON()
+// }

@@ -2,7 +2,6 @@ package models
 
 import (
 	"errors"
-	"fmt"
 	"reflect"
 	"strings"
 	"time"
@@ -11,8 +10,8 @@ import (
 )
 
 type Lu struct {
-	Id         int       `orm:"column(id);pk"`
-	Geom       string    `orm:"column(geom);null"`
+	Id int `orm:"column(id);pk"`
+	// Geom       string    `orm:"column(geom);null"`
 	Areaoil    float64   `orm:"column(areaoil);null"`
 	AreaLic    string    `orm:"column(area_lic);null"`
 	Year       int64     `orm:"column(year);null"`
@@ -144,30 +143,30 @@ func GetAllLu(query map[string]string, fields []string, sortby []string, order [
 
 // UpdateLu updates Lu by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateLuById(m *Lu) (err error) {
-	o := orm.NewOrm()
-	v := Lu{Id: m.Id}
-	// ascertain id exists in the database
-	if err = o.Read(&v); err == nil {
-		var num int64
-		if num, err = o.Update(m); err == nil {
-			fmt.Println("Number of records updated in database:", num)
-		}
-	}
-	return
-}
+// func UpdateLuById(m *Lu) (err error) {
+// 	o := orm.NewOrm()
+// 	v := Lu{Id: m.Id}
+// 	// ascertain id exists in the database
+// 	if err = o.Read(&v); err == nil {
+// 		var num int64
+// 		if num, err = o.Update(m); err == nil {
+// 			fmt.Println("Number of records updated in database:", num)
+// 		}
+// 	}
+// 	return
+// }
 
 // DeleteLu deletes Lu by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteLu(id int) (err error) {
-	o := orm.NewOrm()
-	v := Lu{Id: id}
-	// ascertain id exists in the database
-	if err = o.Read(&v); err == nil {
-		var num int64
-		if num, err = o.Delete(&Lu{Id: id}); err == nil {
-			fmt.Println("Number of records deleted in database:", num)
-		}
-	}
-	return
-}
+// func DeleteLu(id int) (err error) {
+// 	o := orm.NewOrm()
+// 	v := Lu{Id: id}
+// 	// ascertain id exists in the database
+// 	if err = o.Read(&v); err == nil {
+// 		var num int64
+// 		if num, err = o.Delete(&Lu{Id: id}); err == nil {
+// 			fmt.Println("Number of records deleted in database:", num)
+// 		}
+// 	}
+// 	return
+// }

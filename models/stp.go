@@ -2,7 +2,6 @@ package models
 
 import (
 	"errors"
-	"fmt"
 	"reflect"
 	"strings"
 
@@ -10,8 +9,8 @@ import (
 )
 
 type Stp struct {
-	Id        int    `orm:"column(id);pk"`
-	Geom      string `orm:"column(geom);null"`
+	Id int `orm:"column(id);pk"`
+	// Geom      string `orm:"column(geom);null"`
 	WebUkId   string `orm:"column(web_uk_id);null"`
 	VidIz     string `orm:"column(vid_iz);null"`
 	Tgf       string `orm:"column(tgf);null"`
@@ -137,30 +136,30 @@ func GetAllStp(query map[string]string, fields []string, sortby []string, order 
 
 // UpdateStp updates Stp by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateStpById(m *Stp) (err error) {
-	o := orm.NewOrm()
-	v := Stp{Id: m.Id}
-	// ascertain id exists in the database
-	if err = o.Read(&v); err == nil {
-		var num int64
-		if num, err = o.Update(m); err == nil {
-			fmt.Println("Number of records updated in database:", num)
-		}
-	}
-	return
-}
+// func UpdateStpById(m *Stp) (err error) {
+// 	o := orm.NewOrm()
+// 	v := Stp{Id: m.Id}
+// 	// ascertain id exists in the database
+// 	if err = o.Read(&v); err == nil {
+// 		var num int64
+// 		if num, err = o.Update(m); err == nil {
+// 			fmt.Println("Number of records updated in database:", num)
+// 		}
+// 	}
+// 	return
+// }
 
 // DeleteStp deletes Stp by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteStp(id int) (err error) {
-	o := orm.NewOrm()
-	v := Stp{Id: id}
-	// ascertain id exists in the database
-	if err = o.Read(&v); err == nil {
-		var num int64
-		if num, err = o.Delete(&Stp{Id: id}); err == nil {
-			fmt.Println("Number of records deleted in database:", num)
-		}
-	}
-	return
-}
+// func DeleteStp(id int) (err error) {
+// 	o := orm.NewOrm()
+// 	v := Stp{Id: id}
+// 	// ascertain id exists in the database
+// 	if err = o.Read(&v); err == nil {
+// 		var num int64
+// 		if num, err = o.Delete(&Stp{Id: id}); err == nil {
+// 			fmt.Println("Number of records deleted in database:", num)
+// 		}
+// 	}
+// 	return
+// }

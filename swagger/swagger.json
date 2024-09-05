@@ -71,32 +71,6 @@
                         "description": ""
                     }
                 }
-            },
-            "post": {
-                "tags": [
-                    "field"
-                ],
-                "description": "create Field",
-                "operationId": "FieldController.Post",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for Field content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.Field"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "{int} models.Field"
-                    },
-                    "403": {
-                        "description": "body is empty"
-                    }
-                }
             }
         },
         "/field/{id}": {
@@ -124,66 +98,6 @@
                     },
                     "403": {
                         "description": ":id is empty"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "field"
-                ],
-                "description": "update the Field",
-                "operationId": "FieldController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to update",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for Field content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.Field"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.Field"
-                        }
-                    },
-                    "403": {
-                        "description": ":id is not int"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "field"
-                ],
-                "description": "delete the Field",
-                "operationId": "FieldController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to delete",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} delete success!"
-                    },
-                    "403": {
-                        "description": "id is empty"
                     }
                 }
             }
@@ -244,32 +158,6 @@
                         "description": ""
                     }
                 }
-            },
-            "post": {
-                "tags": [
-                    "lu"
-                ],
-                "description": "create Lu",
-                "operationId": "LuController.Post",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for Lu content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.Lu"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "{int} models.Lu"
-                    },
-                    "403": {
-                        "description": "body is empty"
-                    }
-                }
             }
         },
         "/lu/{id}": {
@@ -297,66 +185,6 @@
                     },
                     "403": {
                         "description": ":id is empty"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "lu"
-                ],
-                "description": "update the Lu",
-                "operationId": "LuController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to update",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for Lu content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.Lu"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.Lu"
-                        }
-                    },
-                    "403": {
-                        "description": ":id is not int"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "lu"
-                ],
-                "description": "delete the Lu",
-                "operationId": "LuController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to delete",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} delete success!"
-                    },
-                    "403": {
-                        "description": "id is empty"
                     }
                 }
             }
@@ -417,32 +245,6 @@
                         "description": ""
                     }
                 }
-            },
-            "post": {
-                "tags": [
-                    "sta"
-                ],
-                "description": "create Sta",
-                "operationId": "StaController.Post",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for Sta content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.Sta"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "{int} models.Sta"
-                    },
-                    "403": {
-                        "description": "body is empty"
-                    }
-                }
             }
         },
         "/sta/{id}": {
@@ -470,66 +272,6 @@
                     },
                     "403": {
                         "description": ":id is empty"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "sta"
-                ],
-                "description": "update the Sta",
-                "operationId": "StaController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to update",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for Sta content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.Sta"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.Sta"
-                        }
-                    },
-                    "403": {
-                        "description": ":id is not int"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "sta"
-                ],
-                "description": "delete the Sta",
-                "operationId": "StaController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to delete",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} delete success!"
-                    },
-                    "403": {
-                        "description": "id is empty"
                     }
                 }
             }
@@ -590,30 +332,33 @@
                         "description": ""
                     }
                 }
-            },
-            "post": {
+            }
+        },
+        "/stl/ROSG/{rosg}": {
+            "get": {
                 "tags": [
                     "stl"
                 ],
-                "description": "create Stl",
-                "operationId": "StlController.Post",
+                "description": "get Stl by id",
+                "operationId": "StlController.Get One ROSG",
                 "parameters": [
                     {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for Stl content",
+                        "in": "path",
+                        "name": "rosg",
+                        "description": "The key for staticblock",
                         "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.Stl"
-                        }
+                        "type": "string"
                     }
                 ],
                 "responses": {
-                    "201": {
-                        "description": "{int} models.Stl"
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Stl"
+                        }
                     },
                     "403": {
-                        "description": "body is empty"
+                        "description": ":rosg is empty"
                     }
                 }
             }
@@ -643,66 +388,6 @@
                     },
                     "403": {
                         "description": ":id is empty"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "stl"
-                ],
-                "description": "update the Stl",
-                "operationId": "StlController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to update",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for Stl content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.Stl"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.Stl"
-                        }
-                    },
-                    "403": {
-                        "description": ":id is not int"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "stl"
-                ],
-                "description": "delete the Stl",
-                "operationId": "StlController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to delete",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} delete success!"
-                    },
-                    "403": {
-                        "description": "id is empty"
                     }
                 }
             }
@@ -763,32 +448,6 @@
                         "description": ""
                     }
                 }
-            },
-            "post": {
-                "tags": [
-                    "stp"
-                ],
-                "description": "create Stp",
-                "operationId": "StpController.Post",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for Stp content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.Stp"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "{int} models.Stp"
-                    },
-                    "403": {
-                        "description": "body is empty"
-                    }
-                }
             }
         },
         "/stp/{id}": {
@@ -818,66 +477,6 @@
                         "description": ":id is empty"
                     }
                 }
-            },
-            "put": {
-                "tags": [
-                    "stp"
-                ],
-                "description": "update the Stp",
-                "operationId": "StpController.Put",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to update",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "body for Stp content",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.Stp"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/models.Stp"
-                        }
-                    },
-                    "403": {
-                        "description": ":id is not int"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "stp"
-                ],
-                "description": "delete the Stp",
-                "operationId": "StpController.Delete",
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "The id you want to delete",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "{string} delete success!"
-                    },
-                    "403": {
-                        "description": "id is empty"
-                    }
-                }
             }
         }
     },
@@ -897,9 +496,6 @@
                     "type": "string"
                 },
                 "Gas": {
-                    "type": "string"
-                },
-                "Geom": {
                     "type": "string"
                 },
                 "Id": {
@@ -965,9 +561,6 @@
                 "Ftype": {
                     "type": "string"
                 },
-                "Geom": {
-                    "type": "string"
-                },
                 "HeadNedro": {
                     "type": "string"
                 },
@@ -1030,9 +623,6 @@
                 "Avts": {
                     "type": "string"
                 },
-                "Geom": {
-                    "type": "string"
-                },
                 "GodEnd": {
                     "type": "string"
                 },
@@ -1091,9 +681,6 @@
                 "Avts": {
                     "type": "string"
                 },
-                "Geom": {
-                    "type": "string"
-                },
                 "GodEnd": {
                     "type": "string"
                 },
@@ -1150,9 +737,6 @@
             "type": "object",
             "properties": {
                 "Avts": {
-                    "type": "string"
-                },
-                "Geom": {
                     "type": "string"
                 },
                 "GodEnd": {

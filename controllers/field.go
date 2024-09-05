@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"encoding/json"
 	"errors"
 	"gdx2-beego/models"
 	"strconv"
@@ -17,33 +16,11 @@ type FieldController struct {
 
 // URLMapping ...
 func (c *FieldController) URLMapping() {
-	c.Mapping("Post", c.Post)
+	// c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
-	c.Mapping("Put", c.Put)
-	c.Mapping("Delete", c.Delete)
-}
-
-// Post ...
-// @Title Post
-// @Description create Field
-// @Param	body		body 	models.Field	true		"body for Field content"
-// @Success 201 {int} models.Field
-// @Failure 403 body is empty
-// @router / [post]
-func (c *FieldController) Post() {
-	var v models.Field
-	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddField(&v); err == nil {
-			c.Ctx.Output.SetStatus(201)
-			c.Data["json"] = v
-		} else {
-			c.Data["json"] = err.Error()
-		}
-	} else {
-		c.Data["json"] = err.Error()
-	}
-	c.ServeJSON()
+	// c.Mapping("Put", c.Put)
+	// c.Mapping("Delete", c.Delete)
 }
 
 // GetOne ...
@@ -136,21 +113,21 @@ func (c *FieldController) GetAll() {
 // @Success 200 {object} models.Field
 // @Failure 403 :id is not int
 // @router /:id [put]
-func (c *FieldController) Put() {
-	idStr := c.Ctx.Input.Param(":id")
-	id, _ := strconv.Atoi(idStr)
-	v := models.Field{Id: id}
-	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateFieldById(&v); err == nil {
-			c.Data["json"] = "OK"
-		} else {
-			c.Data["json"] = err.Error()
-		}
-	} else {
-		c.Data["json"] = err.Error()
-	}
-	c.ServeJSON()
-}
+// func (c *FieldController) Put() {
+// 	idStr := c.Ctx.Input.Param(":id")
+// 	id, _ := strconv.Atoi(idStr)
+// 	v := models.Field{Id: id}
+// 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
+// 		if err := models.UpdateFieldById(&v); err == nil {
+// 			c.Data["json"] = "OK"
+// 		} else {
+// 			c.Data["json"] = err.Error()
+// 		}
+// 	} else {
+// 		c.Data["json"] = err.Error()
+// 	}
+// 	c.ServeJSON()
+// }
 
 // Delete ...
 // @Title Delete
@@ -159,13 +136,35 @@ func (c *FieldController) Put() {
 // @Success 200 {string} delete success!
 // @Failure 403 id is empty
 // @router /:id [delete]
-func (c *FieldController) Delete() {
-	idStr := c.Ctx.Input.Param(":id")
-	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteField(id); err == nil {
-		c.Data["json"] = "OK"
-	} else {
-		c.Data["json"] = err.Error()
-	}
-	c.ServeJSON()
-}
+// func (c *FieldController) Delete() {
+// 	idStr := c.Ctx.Input.Param(":id")
+// 	id, _ := strconv.Atoi(idStr)
+// 	if err := models.DeleteField(id); err == nil {
+// 		c.Data["json"] = "OK"
+// 	} else {
+// 		c.Data["json"] = err.Error()
+// 	}
+// 	c.ServeJSON()
+// }
+
+// Post ...
+// @Title Post
+// @Description create Field
+// @Param	body		body 	models.Field	true		"body for Field content"
+// @Success 201 {int} models.Field
+// @Failure 403 body is empty
+// @router / [post]
+// func (c *FieldController) Post() {
+// 	var v models.Field
+// 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
+// 		if _, err := models.AddField(&v); err == nil {
+// 			c.Ctx.Output.SetStatus(201)
+// 			c.Data["json"] = v
+// 		} else {
+// 			c.Data["json"] = err.Error()
+// 		}
+// 	} else {
+// 		c.Data["json"] = err.Error()
+// 	}
+// 	c.ServeJSON()
+// }

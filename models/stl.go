@@ -2,7 +2,6 @@ package models
 
 import (
 	"errors"
-	"fmt"
 	"reflect"
 	"strings"
 
@@ -10,8 +9,8 @@ import (
 )
 
 type Stl struct {
-	Id        int    `orm:"column(id);pk"`
-	Geom      string `orm:"column(geom);null"`
+	Id int `orm:"column(id);pk"`
+	// Geom      string `orm:"column(geom);null"`
 	WebUkId   string `orm:"column(web_uk_id);null"`
 	VidIz     string `orm:"column(vid_iz);null"`
 	Tgf       string `orm:"column(tgf);null"`
@@ -40,17 +39,26 @@ func init() {
 
 // AddStl insert a new Stl into database and returns
 // last inserted Id on success.
-func AddStl(m *Stl) (id int64, err error) {
-	o := orm.NewOrm()
-	id, err = o.Insert(m)
-	return
-}
+// func AddStl(m *Stl) (id int64, err error) {
+// 	o := orm.NewOrm()
+// 	id, err = o.Insert(m)
+// 	return
+// }
 
 // GetStlById retrieves Stl by Id. Returns error if
 // Id doesn't exist
 func GetStlById(id int) (v *Stl, err error) {
 	o := orm.NewOrm()
 	v = &Stl{Id: id}
+	if err = o.Read(v); err == nil {
+		return v, nil
+	}
+	return nil, err
+}
+
+func GetStlByRosg(rosg string) (v *Stl, err error) {
+	o := orm.NewOrm()
+	v = &Stl{InNRosg: rosg}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
@@ -137,30 +145,30 @@ func GetAllStl(query map[string]string, fields []string, sortby []string, order 
 
 // UpdateStl updates Stl by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateStlById(m *Stl) (err error) {
-	o := orm.NewOrm()
-	v := Stl{Id: m.Id}
-	// ascertain id exists in the database
-	if err = o.Read(&v); err == nil {
-		var num int64
-		if num, err = o.Update(m); err == nil {
-			fmt.Println("Number of records updated in database:", num)
-		}
-	}
-	return
-}
+// func UpdateStlById(m *Stl) (err error) {
+// 	o := orm.NewOrm()
+// 	v := Stl{Id: m.Id}
+// 	// ascertain id exists in the database
+// 	if err = o.Read(&v); err == nil {
+// 		var num int64
+// 		if num, err = o.Update(m); err == nil {
+// 			fmt.Println("Number of records updated in database:", num)
+// 		}
+// 	}
+// 	return
+// }
 
 // DeleteStl deletes Stl by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteStl(id int) (err error) {
-	o := orm.NewOrm()
-	v := Stl{Id: id}
-	// ascertain id exists in the database
-	if err = o.Read(&v); err == nil {
-		var num int64
-		if num, err = o.Delete(&Stl{Id: id}); err == nil {
-			fmt.Println("Number of records deleted in database:", num)
-		}
-	}
-	return
-}
+// func DeleteStl(id int) (err error) {
+// 	o := orm.NewOrm()
+// 	v := Stl{Id: id}
+// 	// ascertain id exists in the database
+// 	if err = o.Read(&v); err == nil {
+// 		var num int64
+// 		if num, err = o.Delete(&Stl{Id: id}); err == nil {
+// 			fmt.Println("Number of records deleted in database:", num)
+// 		}
+// 	}
+// 	return
+// }

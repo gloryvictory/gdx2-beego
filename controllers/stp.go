@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"encoding/json"
 	"errors"
 	"gdx2-beego/models"
 	"strconv"
@@ -17,33 +16,11 @@ type StpController struct {
 
 // URLMapping ...
 func (c *StpController) URLMapping() {
-	c.Mapping("Post", c.Post)
+	// c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
-	c.Mapping("Put", c.Put)
-	c.Mapping("Delete", c.Delete)
-}
-
-// Post ...
-// @Title Post
-// @Description create Stp
-// @Param	body		body 	models.Stp	true		"body for Stp content"
-// @Success 201 {int} models.Stp
-// @Failure 403 body is empty
-// @router / [post]
-func (c *StpController) Post() {
-	var v models.Stp
-	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddStp(&v); err == nil {
-			c.Ctx.Output.SetStatus(201)
-			c.Data["json"] = v
-		} else {
-			c.Data["json"] = err.Error()
-		}
-	} else {
-		c.Data["json"] = err.Error()
-	}
-	c.ServeJSON()
+	// c.Mapping("Put", c.Put)
+	// c.Mapping("Delete", c.Delete)
 }
 
 // GetOne ...
@@ -136,21 +113,21 @@ func (c *StpController) GetAll() {
 // @Success 200 {object} models.Stp
 // @Failure 403 :id is not int
 // @router /:id [put]
-func (c *StpController) Put() {
-	idStr := c.Ctx.Input.Param(":id")
-	id, _ := strconv.Atoi(idStr)
-	v := models.Stp{Id: id}
-	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateStpById(&v); err == nil {
-			c.Data["json"] = "OK"
-		} else {
-			c.Data["json"] = err.Error()
-		}
-	} else {
-		c.Data["json"] = err.Error()
-	}
-	c.ServeJSON()
-}
+// func (c *StpController) Put() {
+// 	idStr := c.Ctx.Input.Param(":id")
+// 	id, _ := strconv.Atoi(idStr)
+// 	v := models.Stp{Id: id}
+// 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
+// 		if err := models.UpdateStpById(&v); err == nil {
+// 			c.Data["json"] = "OK"
+// 		} else {
+// 			c.Data["json"] = err.Error()
+// 		}
+// 	} else {
+// 		c.Data["json"] = err.Error()
+// 	}
+// 	c.ServeJSON()
+// }
 
 // Delete ...
 // @Title Delete
@@ -159,13 +136,35 @@ func (c *StpController) Put() {
 // @Success 200 {string} delete success!
 // @Failure 403 id is empty
 // @router /:id [delete]
-func (c *StpController) Delete() {
-	idStr := c.Ctx.Input.Param(":id")
-	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteStp(id); err == nil {
-		c.Data["json"] = "OK"
-	} else {
-		c.Data["json"] = err.Error()
-	}
-	c.ServeJSON()
-}
+// func (c *StpController) Delete() {
+// 	idStr := c.Ctx.Input.Param(":id")
+// 	id, _ := strconv.Atoi(idStr)
+// 	if err := models.DeleteStp(id); err == nil {
+// 		c.Data["json"] = "OK"
+// 	} else {
+// 		c.Data["json"] = err.Error()
+// 	}
+// 	c.ServeJSON()
+// }
+
+// Post ...
+// @Title Post
+// @Description create Stp
+// @Param	body		body 	models.Stp	true		"body for Stp content"
+// @Success 201 {int} models.Stp
+// @Failure 403 body is empty
+// @router / [post]
+// func (c *StpController) Post() {
+// 	var v models.Stp
+// 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
+// 		if _, err := models.AddStp(&v); err == nil {
+// 			c.Ctx.Output.SetStatus(201)
+// 			c.Data["json"] = v
+// 		} else {
+// 			c.Data["json"] = err.Error()
+// 		}
+// 	} else {
+// 		c.Data["json"] = err.Error()
+// 	}
+// 	c.ServeJSON()
+// }
