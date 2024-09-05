@@ -2,6 +2,7 @@ package models
 
 import (
 	"errors"
+	"fmt"
 	"reflect"
 	"strings"
 
@@ -59,6 +60,13 @@ func GetStlById(id int) (v *Stl, err error) {
 func GetStlByRosg(rosg string) (v *Stl, err error) {
 	o := orm.NewOrm()
 	v = &Stl{InNRosg: rosg}
+
+	// qb, _ := orm.NewQueryBuilder("postgres")
+	// qb.Select("id", "in_n_rosg").From("stl").Where("in_n_rosg == rosg").OrderBy("id").Desc().Limit(10)
+	// orm.NewOrm().Raw(qb.String(), 1).QueryRows(v)
+
+	fmt.Println(rosg)
+	fmt.Println(v)
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
