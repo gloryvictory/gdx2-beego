@@ -1,10 +1,10 @@
 package main
 
 import (
-	_ "test1/routers"
+	_ "gdx2-beego/routers"
 
 	"github.com/astaxie/beego"
-	"github.com/beego/beego/orm"
+	"github.com/astaxie/beego/orm"
 	_ "github.com/lib/pq"
 )
 
@@ -16,3 +16,4 @@ func main() {
 	}
 	beego.Run()
 }
+
