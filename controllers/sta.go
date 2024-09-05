@@ -3,7 +3,7 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
-	"github.com/gloryvictory/gdx2-beego/models"
+	"gdx2-beego/models"
 	"strconv"
 	"strings"
 

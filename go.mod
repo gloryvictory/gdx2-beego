@@ -2,12 +2,9 @@ module gdx2-beego
 
 go 1.23
 
-require github.com/astaxie/beego v1.12.1
-
-require github.com/smartystreets/goconvey v1.6.4
-
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect
+	github.com/astaxie/beego v1.12.3 // indirect
 	github.com/beego/bee/v2 v2.1.0 // indirect
 	github.com/beego/beego/v2 v2.3.0 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
@@ -33,6 +30,7 @@ require (
 	github.com/mattn/go-runewidth v0.0.13 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/pelletier/go-toml v1.9.2 // indirect
+	github.com/pkg/errors v0.9.1 // indirect
 	github.com/prometheus/client_golang v1.19.0 // indirect
 	github.com/prometheus/client_model v0.5.0 // indirect
 	github.com/prometheus/common v0.48.0 // indirect

@@ -1,0 +1,821 @@
+swagger: "2.0"
+info:
+  title: beego Test API
+  description: beego has a very cool tools to autogenerate documents for your API
+  version: 1.0.0
+  termsOfService: http://beego.me/
+  contact:
+    email: astaxie@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+basePath: /v1
+paths:
+  /field/:
+    get:
+      tags:
+      - field
+      description: get Field
+      operationId: FieldController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Field'
+        "403":
+          description: ""
+    post:
+      tags:
+      - field
+      description: create Field
+      operationId: FieldController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Field content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Field'
+      responses:
+        "201":
+          description: '{int} models.Field'
+        "403":
+          description: body is empty
+  /field/{id}:
+    get:
+      tags:
+      - field
+      description: get Field by id
+      operationId: FieldController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Field'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - field
+      description: update the Field
+      operationId: FieldController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Field content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Field'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Field'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - field
+      description: delete the Field
+      operationId: FieldController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /lu/:
+    get:
+      tags:
+      - lu
+      description: get Lu
+      operationId: LuController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Lu'
+        "403":
+          description: ""
+    post:
+      tags:
+      - lu
+      description: create Lu
+      operationId: LuController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Lu content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Lu'
+      responses:
+        "201":
+          description: '{int} models.Lu'
+        "403":
+          description: body is empty
+  /lu/{id}:
+    get:
+      tags:
+      - lu
+      description: get Lu by id
+      operationId: LuController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Lu'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - lu
+      description: update the Lu
+      operationId: LuController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Lu content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Lu'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Lu'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - lu
+      description: delete the Lu
+      operationId: LuController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /sta/:
+    get:
+      tags:
+      - sta
+      description: get Sta
+      operationId: StaController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Sta'
+        "403":
+          description: ""
+    post:
+      tags:
+      - sta
+      description: create Sta
+      operationId: StaController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Sta content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Sta'
+      responses:
+        "201":
+          description: '{int} models.Sta'
+        "403":
+          description: body is empty
+  /sta/{id}:
+    get:
+      tags:
+      - sta
+      description: get Sta by id
+      operationId: StaController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Sta'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - sta
+      description: update the Sta
+      operationId: StaController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Sta content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Sta'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Sta'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - sta
+      description: delete the Sta
+      operationId: StaController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /stl/:
+    get:
+      tags:
+      - stl
+      description: get Stl
+      operationId: StlController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Stl'
+        "403":
+          description: ""
+    post:
+      tags:
+      - stl
+      description: create Stl
+      operationId: StlController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Stl content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Stl'
+      responses:
+        "201":
+          description: '{int} models.Stl'
+        "403":
+          description: body is empty
+  /stl/{id}:
+    get:
+      tags:
+      - stl
+      description: get Stl by id
+      operationId: StlController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Stl'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - stl
+      description: update the Stl
+      operationId: StlController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Stl content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Stl'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Stl'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - stl
+      description: delete the Stl
+      operationId: StlController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /stp/:
+    get:
+      tags:
+      - stp
+      description: get Stp
+      operationId: StpController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Stp'
+        "403":
+          description: ""
+    post:
+      tags:
+      - stp
+      description: create Stp
+      operationId: StpController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Stp content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Stp'
+      responses:
+        "201":
+          description: '{int} models.Stp'
+        "403":
+          description: body is empty
+  /stp/{id}:
+    get:
+      tags:
+      - stp
+      description: get Stp by id
+      operationId: StpController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Stp'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - stp
+      description: update the Stp
+      operationId: StpController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Stp content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Stp'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Stp'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - stp
+      description: delete the Stp
+      operationId: StpController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+definitions:
+  models.Field:
+    title: Field
+    type: object
+    properties:
+      Areaoil:
+        type: number
+        format: double
+      Condensat:
+        type: string
+      Ftype:
+        type: string
+      Gas:
+        type: string
+      Geom:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      Istochnik:
+        type: string
+      NameRu:
+        type: string
+      Nom:
+        type: integer
+        format: int64
+      Note:
+        type: string
+      Oblast:
+        type: string
+      Oil:
+        type: string
+      Stadia:
+        type: string
+      Tip:
+        type: string
+      Year:
+        type: integer
+        format: int64
+  models.Lu:
+    title: Lu
+    type: object
+    properties:
+      Anumber:
+        type: string
+      AreaLic:
+        type: string
+      Areaoil:
+        type: number
+        format: double
+      Authority:
+        type: string
+      DataEnd:
+        type: string
+        format: datetime
+      DataStart:
+        type: string
+        format: datetime
+      Ftype:
+        type: string
+      Geom:
+        type: string
+      HeadNedro:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      NameRus:
+        type: string
+      Nedropol:
+        type: string
+      Nedropolz:
+        type: string
+      Nom:
+        type: integer
+        format: int64
+      NomLic:
+        type: string
+      NomList:
+        type: string
+      NomUrfo:
+        type: integer
+        format: int64
+      NomZsngp:
+        type: integer
+        format: int64
+      Oblast:
+        type: string
+      Priznak:
+        type: string
+      Sostiyanie:
+        type: string
+      Vid:
+        type: string
+      Year:
+        type: integer
+        format: int64
+      Zngp:
+        type: string
+  models.Sta:
+    title: Sta
+    type: object
+    properties:
+      Avts:
+        type: string
+      Geom:
+        type: string
+      GodEnd:
+        type: string
+      GodNach:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      InNRosg:
+        type: string
+      InNTgf:
+        type: string
+      Method:
+        type: string
+      NUkRosg:
+        type: string
+      NUkTgf:
+        type: string
+      NameOtch:
+        type: string
+      NameOtch1:
+        type: string
+      Nom1000:
+        type: string
+      OrgIsp:
+        type: string
+      Scale:
+        type: string
+      Tgf:
+        type: string
+      VidIz:
+        type: string
+      WebUkId:
+        type: string
+  models.Stl:
+    title: Stl
+    type: object
+    properties:
+      Avts:
+        type: string
+      Geom:
+        type: string
+      GodEnd:
+        type: string
+      GodNach:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      InNRosg:
+        type: string
+      InNTgf:
+        type: string
+      Method:
+        type: string
+      NUkRosg:
+        type: string
+      NUkTgf:
+        type: string
+      NameOtch:
+        type: string
+      NameOtch1:
+        type: string
+      Nom1000:
+        type: string
+      OrgIsp:
+        type: string
+      Scale:
+        type: string
+      Tgf:
+        type: string
+      VidIz:
+        type: string
+      WebUkId:
+        type: string
+  models.Stp:
+    title: Stp
+    type: object
+    properties:
+      Avts:
+        type: string
+      Geom:
+        type: string
+      GodEnd:
+        type: string
+      GodNach:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      InNRosg:
+        type: string
+      InNTgf:
+        type: string
+      Method:
+        type: string
+      NUkRosg:
+        type: string
+      NUkTgf:
+        type: string
+      NameOtch:
+        type: string
+      NameOtch1:
+        type: string
+      Nom1000:
+        type: string
+      OrgIsp:
+        type: string
+      Scale:
+        type: string
+      Tgf:
+        type: string
+      VidIz:
+        type: string
+      WebUkId:
+        type: string
+tags:
+- name: lu
+  description: |
+    LuController operations for Lu
+- name: field
+  description: |
+    FieldController operations for Field
+- name: stp
+  description: |
+    StpController operations for Stp
+- name: stl
+  description: |
+    StlController operations for Stl
+- name: sta
+  description: |
+    StaController operations for Sta

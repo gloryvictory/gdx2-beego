@@ -8,7 +8,7 @@
 package routers
 
 import (
-	"github.com/gloryvictory/gdx2-beego/controllers"
+	"gdx2-beego/controllers"
 
 	"github.com/astaxie/beego"
 )
