@@ -2,7 +2,6 @@ package models
 
 import (
 	"errors"
-	"fmt"
 	"reflect"
 	"strings"
 
@@ -57,21 +56,49 @@ func GetStlById(id int) (v *Stl, err error) {
 	return nil, err
 }
 
-func GetStlByRosg(rosg string) (v *Stl, err error) {
+func GetStlByRosg(rosg string) (dataList []Stl, err error) {
+	// list encapsulated data
+	var list []Stl
 	o := orm.NewOrm()
-	v = &Stl{InNRosg: rosg}
+	nums, err := o.Raw("SELECT * FROM stl WHERE in_n_rosg = ?", rosg).QueryRows(&list)
+	if nums == 0 {
 
-	// qb, _ := orm.NewQueryBuilder("postgres")
-	// qb.Select("id", "in_n_rosg").From("stl").Where("in_n_rosg == rosg").OrderBy("id").Desc().Limit(10)
-	// orm.NewOrm().Raw(qb.String(), 1).QueryRows(v)
-
-	fmt.Println(rosg)
-	fmt.Println(v)
-	if err = o.Read(v); err == nil {
-		return v, nil
 	}
-	return nil, err
+	return list, err
 }
+
+// sql := fmt.Sprintf("SELECT %sid%s,%sname%s FROM %suser%s WHERE id = ?",Q,Q,Q,Q,Q,Q)
+// rs := Ormer.Raw(sql, 1)
+
+// func GetStlByRosg(rosg string) (v *Stl, err error) {
+// 	o := orm.NewOrm()
+// 	v = &Stl{InNRosg: rosg}
+// 	qb, _ := orm.NewQueryBuilder("postgres")
+// 	qb.Select("in_n_rosg").From("stl").Where("in_n_rosg == rosg")
+
+// 	// query = fmt.Sprintf("SELECT 'id','in_n_rosg' FROM %sstl%s", Q, Q)
+// 	// num, err = dORM.Raw(query).QueryRows(&ids,&names) // ids=>{1,2},names=>{"nobody","slene"}
+
+// 	// row, err := o.Raw(qb.String(), 1).QueryRows(v)
+// 	// qb, _ := orm.NewQueryBuilder("postgres")
+// 	// qb.Select("id", "in_n_rosg").From("stl").Where("in_n_rosg == rosg").OrderBy("id").Desc().Limit(10)
+// 	// orm.NewOrm().Raw(qb.String(), 1).QueryRows(v)
+
+// 	fmt.Println(rosg)
+// 	fmt.Println(v)
+// 	if err = o.Raw(qb.String(), 1).QueryRows(v); err == nil {
+// 		return v, nil
+// 	}
+
+// 	// if err == nil {
+// 	// 	return fmt.Print("Error: " + err.Error())
+// 	// }
+// 	// if err = o.Read(v); err == nil {
+// 	// 	return v, nil
+// 	// }
+// 	// return nil, err
+// 	return nil, err
+// }
 
 // GetAllStl retrieves all Stl matches certain condition. Returns empty list if
 // no records exist
