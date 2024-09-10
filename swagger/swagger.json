@@ -334,6 +334,35 @@
                 }
             }
         },
+        "/stl/COUNT/ROSG/{rosg}": {
+            "get": {
+                "tags": [
+                    "stl"
+                ],
+                "description": "get count Stl by ROSG",
+                "operationId": "StlController.Get Coount ROSG",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "rosg",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Stl"
+                        }
+                    },
+                    "403": {
+                        "description": ":rosg is empty"
+                    }
+                }
+            }
+        },
         "/stl/ROSG/{rosg}": {
             "get": {
                 "tags": [

@@ -81,6 +81,15 @@ func init() {
 
     beego.GlobalControllerRouter["gdx2-beego/controllers:StlController"] = append(beego.GlobalControllerRouter["gdx2-beego/controllers:StlController"],
         beego.ControllerComments{
+            Method: "GetCountSTLROSG",
+            Router: "/COUNT/ROSG/:rosg",
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["gdx2-beego/controllers:StlController"] = append(beego.GlobalControllerRouter["gdx2-beego/controllers:StlController"],
+        beego.ControllerComments{
             Method: "GetOneROSG",
             Router: "/ROSG/:rosg",
             AllowHTTPMethods: []string{"get"},

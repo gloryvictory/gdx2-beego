@@ -63,6 +63,25 @@ func (c *StlController) GetOneROSG() {
 	c.ServeJSON()
 }
 
+// GetCount ...
+// @Title Get Coount ROSG
+// @Description get count Stl by ROSG
+// @Param	rosg		path 	string	true		"The key for staticblock"
+// @Success 200 {object} models.Stl
+// @Failure 403 :rosg is empty
+// @router /COUNT/ROSG/:rosg [get]
+func (c *StlController) GetCountSTLROSG() {
+	idStr := c.Ctx.Input.Param(":rosg")
+	// id, _ := strconv.Atoi(idStr)
+	v, err := models.GetStlCountByRosg(idStr)
+	if err != nil {
+		c.Data["json"] = err.Error()
+	} else {
+		c.Data["json"] = v
+	}
+	c.ServeJSON()
+}
+
 // GetAll ...
 // @Title Get All
 // @Description get Stl
