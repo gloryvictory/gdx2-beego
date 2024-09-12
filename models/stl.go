@@ -2,7 +2,6 @@ package models
 
 import (
 	"errors"
-	"fmt"
 	"reflect"
 	"strings"
 
@@ -64,12 +63,13 @@ func GetStlCountByRosg(rosg string) (counter int, err error) {
 	// list encapsulated data
 	// var list []Stl
 	var count int
+
 	o := orm.NewOrm()
 	o.Raw("SELECT count(*) as Count FROM stl WHERE in_n_rosg = ?", rosg).QueryRow(&count)
-	if err == nil {
-		fmt.Println(count)
-	}
 
+	// if err == nil {
+	// 	fmt.Println(count)
+	// }
 	return count, err
 }
 

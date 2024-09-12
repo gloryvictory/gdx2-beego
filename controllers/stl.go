@@ -1,13 +1,20 @@
 package controllers
 
 import (
+	"encoding/json"
 	"errors"
+	"fmt"
 	"gdx2-beego/models"
 	"strconv"
 	"strings"
 
 	"github.com/astaxie/beego"
 )
+
+type ResponseJson struct {
+	Msg   string `json:"msg"`   // Сериализуется как "msg"
+	Count int    `json:"count"` // Сериализуется как "count"
+}
 
 // StlController operations for Stl
 type StlController struct {
@@ -74,13 +81,37 @@ func (c *StlController) GetCountSTLROSG() {
 	idStr := c.Ctx.Input.Param(":rosg")
 	// id, _ := strconv.Atoi(idStr)
 	v, err := models.GetStlCountByRosg(idStr)
+	// c = strconv.Itoa(v)
+	// fmt.Printf("%T, %v\n", c, c)
+
 	if err != nil {
 		c.Data["json"] = err.Error()
 	} else {
-		c.Data["json"] = v
+
+		r := &ResponseJson{Msg: "ok", Count: v}
+		// data, err := json.MarshalIndent(r, "", "  ")
+		data, err := json.Marshal(r)
+		if err != nil {
+			fmt.Println("Ошибка записи данных:", err)
+		}
+		fmt.Println(r)
+		c.Data["json"] = string(data)
 	}
 	c.ServeJSON()
 }
+
+// func (c *StlController) GetCountSTLROSG() {
+// 	idStr := c.Ctx.Input.Param(":rosg")
+// 	// id, _ := strconv.Atoi(idStr)
+// 	v, err := models.GetStlCountByRosg(idStr)
+// 	if err != nil {
+// 		c.Data["json"] = err.Error()
+// 	} else {
+
+// 		c.Data["json"] = v
+// 	}
+// 	c.ServeJSON()
+// }
 
 // GetAll ...
 // @Title Get All
