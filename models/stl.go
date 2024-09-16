@@ -2,6 +2,7 @@ package models
 
 import (
 	"errors"
+	"fmt"
 	"reflect"
 	"strings"
 
@@ -73,14 +74,35 @@ func GetStlCountByRosg(rosg string) (counter int, err error) {
 	return count, err
 }
 
+// func GetStlByRosg(rosg string) (dataList []Stl, err error) {
+// 	// list encapsulated data
+// 	var list []Stl
+// 	o := orm.NewOrm()
+// 	nums, err := o.Raw("SELECT * FROM stl WHERE in_n_rosg = ?", rosg).QueryRows(&list)
+// 	if nums == 0 {
+
+// 	}
+// 	return list, err
+// }
+
 func GetStlByRosg(rosg string) (dataList []Stl, err error) {
 	// list encapsulated data
 	var list []Stl
 	o := orm.NewOrm()
-	nums, err := o.Raw("SELECT * FROM stl WHERE in_n_rosg = ?", rosg).QueryRows(&list)
-	if nums == 0 {
+	qb, _ := orm.NewQueryBuilder("postgres")
+	// Build query object
+	where_cond := fmt.Sprintf("in_n_rosg ==%v", rosg)
+	fmt.Println(where_cond)
+	// logs.Logger.Info("where_cond:", where_cond)
+	qb.Select("*").From("Stl").Where(where_cond) //.OrderBy("ID") //.Limit(limit).Offset(offset)   "in_n_rosg ==?"
+	// Export SQL statement
+	sql := qb.String()
 
-	}
+	// Execute SQL statement
+	o.Raw(sql, rosg).QueryRows(&list)
+	// nums, err := o.Raw("SELECT * FROM stl WHERE in_n_rosg = ?", rosg).QueryRows(&list)
+	// if nums == 0 {
+	// }
 	return list, err
 }
 
